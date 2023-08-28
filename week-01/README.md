@@ -8,12 +8,11 @@ Di minggu kesatu ini, mahasiswa diperkenalkan dengan framework flutter dan bahas
 
 ## Tahapan
 
-- Bukti Dart telah terinstall![img.png](docs/screenshot-1.png)
-<br>
+- Bukti Dart telah terinstall
+<br>![img.png](docs/screenshot-1.png)
 
 - Bukti konfigurasi vscode
 <br>![img.png](docs/screenshot-2.png)
 
 - Bukti Program "Hello, World" (modifikasi) 
-<br>
-![img.png](docs/screenshot-3.png)
+<br>![img.png](docs/screenshot-3.png)
