@@ -1,6 +1,6 @@
-# Week 02 - Pengenalan Dart
+# Week 03 - Pengenalan Dart - Bagian 2
 
-Di minggu kedua ini, mahasiswa akan mempelajari dart, fiturnya, cara kerjanya, dan dasar pemrogramannya.
+Di minggu ketiga ini, mahasiswa akan mempelajari lanjutan konsep dart, mulai dari control flow, perulangan, dan langsung mempraktikkan konsep-konsep tersebut
 
 ## Penulis
 
