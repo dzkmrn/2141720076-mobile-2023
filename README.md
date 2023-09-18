@@ -7,3 +7,4 @@
 ## Daftar Isi
 - [Minggu ke-1 : Dasar Dart](/week-01/)
 - [Minggu ke-2 : Pengenalan Dart](week-02/)
+- [Minggu ke-2 : Pengenalan Dart](week-03/)
