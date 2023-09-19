@@ -1,6 +1,6 @@
-# Week 02 - Pengenalan Dart
+# Week 04 - Dart - List, Set, Maps, Record
 
-Di minggu kedua ini, mahasiswa akan mempelajari dart, fiturnya, cara kerjanya, dan dasar pemrogramannya.
+Di minggu keempat ini, mahasiswa akan mempelajari dan bereksperimen pada list, set, maps, record, dan operator-operator berkaitan. Terakhir juga diberikan tugas untuk menguji pemahaman mahasiswa. 
 
 ## Penulis
 
