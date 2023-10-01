@@ -383,15 +383,18 @@ Di minggu kelima ini, mahasiswa akan mempelajari dasar pustaka Flutter.
 
 2. Pada praktikum 4 mulai dari Langkah 3 sampai 6, buatlah file widget tersendiri di folder basic_widgets, kemudian pada file main.dart cukup melakukan import widget sesuai masing-masing langkah tersebut!
 
-    >> Jawaban: 
+    >> Jawaban: Disini, saya membuat dialog_widget dan textfield_widget di dalam file basic_widgets, untuk kemudian di-impor ke main dart dan dipanggil function-nya di dalam MyHomePage(), kemudian untuk datetime-nya sendiri dimasukkan ke dalam widget MyHomePage() juga. Sehingga hasil akhirnya seperti berikut: 
 
-    ```dart
-
-    ```
+    <img src = docs/hape.gif>
 
 3. Selesaikan Codelabs: Your first Flutter app, lalu buatlah laporan praktikumnya dan push ke repository GitHub Anda!
 README.md berisi: capture hasil akhir tiap praktikum (side-by-side, bisa juga berupa file GIF agar terlihat proses perubahan ketika ada aksi dari pengguna) di browser dan perangkat fisik (device) dengan menampilkan NIM dan Nama Anda sebagai ciri pekerjaan Anda. Jika mode developer di perangkat HP Anda belum aktif, silakan cari di internet cara mengaktifkannya!
+
+    >> Jawaban: 
+
 4. Kumpulkan berupa link repository/commit GitHub Anda ke tautan spreadsheet yang telah disepakati oleh dosen!
+
+    >> Jawaban: Sudah, terima kasih ^^
 
 
 

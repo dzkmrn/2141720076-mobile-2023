@@ -9,7 +9,7 @@ class MyTextField extends StatelessWidget {
         obscureText: false,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
-          labelText: 'Nama',
+          labelText: 'Dzaka | 2141720076',
         ));
   }
 }
