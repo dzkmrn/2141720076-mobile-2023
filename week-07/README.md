@@ -248,8 +248,11 @@ Di minggu ketujuh ini, mahasiswa akan mempelajari dasar-dasar dalam layouting di
 
     **Jawaban:**
 
-    Silahkan klik disini pakk untuk melihat project-nyaa
+    Silahkan klik disini pakk untuk melihat project-nyaa ^^
 
+    >> [Basic_Layout_Flutter](../week-07/src/basic_layout_flutter/)
+
+    
 3. Kumpulkan link commit repository GitHub Anda ke spreadsheet yang telah disediakan!
 
     **Jawaban:**
