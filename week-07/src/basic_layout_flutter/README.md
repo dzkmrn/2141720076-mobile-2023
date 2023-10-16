@@ -91,6 +91,11 @@ pic3
 
 ### Enter Contact Information
 
+### Part 3
+
+#### Add four icons
+
+<img src = 'docs/ss16.png'>
 
 
 
