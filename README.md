@@ -11,5 +11,6 @@
 - [Minggu ke-4 : Dart - List, Set, Maps, Record](week-04/)
 - [Minggu ke-5 : Flutter Basic #1](week-05/)
 - [Minggu ke-7 : Flutter Layout Navigating](week-07/)
+- [Minggu ke-9 : Flutter Management Plugin](week-09/)
 
 

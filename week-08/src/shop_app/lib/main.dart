@@ -8,21 +8,7 @@ void main() {
     initialRoute: '/',
     routes: {
       '/': (context) => HomePage(),
-      ItemPage.routeName: (context) => ItemPage(),
+      '/item': (context) => ItemPage(),
     },
   ));
-}
-
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-        title: const Text('Shopping List'),
-      )),
-    );
-  }
 }

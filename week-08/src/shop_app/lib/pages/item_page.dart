@@ -4,7 +4,7 @@ import 'package:shop_app/models/Item.dart';
 class ItemPage extends StatelessWidget {
   const ItemPage({super.key});
 
-  static const routeName = '/item';
+  final routeName = '/item';
 
   @override
   Widget build(BuildContext context) {

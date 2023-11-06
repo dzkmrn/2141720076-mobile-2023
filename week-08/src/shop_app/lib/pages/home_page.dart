@@ -10,6 +10,8 @@ class HomePage extends StatelessWidget {
     Item(name: 'Salt', price: 2000),
   ];
 
+  final routeName = '/item';
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,11 +29,7 @@ class HomePage extends StatelessWidget {
                 final item = Items[index];
                 return InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, ItemPage.routeName,
-                        arguments: Item(
-                          name: item.name,
-                          price: item.price,
-                        ));
+                    Navigator.pushNamed(context, '/item', arguments: item);
                   },
                   child: Card(
                     child: Container(
@@ -43,7 +41,7 @@ class HomePage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  item.name,
+                                  item.name!,
                                   style: const TextStyle(fontSize: 18),
                                 ),
                                 Text(
