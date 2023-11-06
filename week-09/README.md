@@ -133,4 +133,43 @@ Container(
 
 >> Jawaban: 
 
-6. Kumpulkan laporan praktikum Anda berupa link repository GitHub ke spreadsheet yang telah disediakan!
+    1. key: Parameter ini mengontrol bagaimana satu widget menggantikan widget lain dalam pohon.
+
+    2. textKey: Digunakan untuk mengatur kunci yang terkait dengan widget Teks yang dihasilkan.
+
+    3. style: Jika tidak null, parameter ini menentukan gaya yang akan diterapkan pada teks.
+
+    4. minFontSize: Parameter ini mengatur batasan ukuran minimum teks yang akan diterapkan saat menyesuaikan ukuran teks secara otomatis, kecuali jika presetFontSizes diatur.
+
+    5. maxFontSize: Parameter ini menentukan batasan ukuran maksimum teks yang digunakan saat menyesuaikan ukuran teks secara otomatis, kecuali jika presetFontSizes diatur.
+
+    6. stepGranularity: Menentukan ukuran langkah di mana ukuran font disesuaikan dengan batasan.
+
+    7. presetFontSizes: Predefines semua ukuran font yang mungkin, dengan catatan bahwa harus dalam urutan menurun.
+
+    8. group: Parameter ini sinkronisasi ukuran beberapa AutoSizeTexts.
+
+    9. textAlign: Cara teks harus diatur secara horizontal.
+
+    10. textDirection: Parameter ini menentukan arah teks, yang memengaruhi cara nilai-nilai textAlign seperti TextAlign.start dan TextAlign.end diinterpretasikan.
+
+    11. locale: Digunakan untuk memilih font ketika karakter Unicode yang sama dapat dirender secara berbeda berdasarkan bahasa dan budaya.
+
+    12. softWrap: Menentukan apakah teks harus mematahkan baris secara lembut.
+
+    13. wrapWords: Menentukan apakah kata-kata yang tidak muat dalam satu baris harus dibungkus.
+
+    14. overflow: Menentukan cara overflow visual harus diatasi.
+
+    15. overflowReplacement: Jika teks melampaui batasnya dan tidak muat, widget ini ditampilkan sebagai penggantinya.
+
+    16. textScaleFactor: Menentukan jumlah piksel font untuk setiap piksel logis. Juga memengaruhi minFontSize, maxFontSize, dan presetFontSizes.
+
+    17. maxLines: Jumlah maksimum baris opsional yang bisa ditampilkan oleh teks.
+
+    18. semanticsLabel: Memberikan label semantik alternatif untuk teks ini.
+
+
+6.Kumpulkan laporan praktikum Anda berupa link repository GitHub ke spreadsheet yang telah disediakan!
+
+>> Jawaban: Sudah Pakk ^^

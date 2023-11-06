@@ -12,6 +12,6 @@ class RedTextWidget extends StatelessWidget {
       style: const TextStyle(color: Colors.red, fontSize: 14),
       maxLines: 2,
       overflow: TextOverflow.ellipsis,
-);
+    );
   }
 }
