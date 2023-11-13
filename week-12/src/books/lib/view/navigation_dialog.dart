@@ -39,28 +39,28 @@ class _NavigationDialogScreenState extends State<NavigationDialogScreen> {
           content: const Text('Please choose a color'),
           actions: <Widget>[
             TextButton(
-              child: const Text('Red'),
+              child: const Text('Purple'),
               onPressed: () {
                 setState(() {
-                  color = Colors.red.shade700;
+                  color = Colors.purple.shade700;
                 });
                 Navigator.pop(context);
               },
             ),
             TextButton(
-              child: const Text('Green'),
+              child: const Text('Grey'),
               onPressed: () {
                 setState(() {
-                  color = Colors.green.shade700;
+                  color = Colors.grey.shade700;
                 });
                 Navigator.pop(context);
               },
             ),
             TextButton(
-              child: const Text('Blue'),
+              child: const Text('Black'),
               onPressed: () {
                 setState(() {
-                  color = Colors.blue.shade700;
+                  color = Colors.black;
                 });
                 Navigator.pop(context);
               },
