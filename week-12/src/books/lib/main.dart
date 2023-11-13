@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
@@ -46,27 +47,29 @@ class _FuturePageState extends State<FuturePage> {
             ElevatedButton(
               child: const Text('GO!'),
               onPressed: () {
-                count(); //tambahhkan metod count() pada onPressed
-                setState(() {});
-                getData().then((value) {
-                  result = value.body.toString().substring(0, 450);
-                  setState(() {});
-                }).catchError((_) {
-                  result = 'An error has occured!';
-                  setState(() {});
-                });
-                getNumber().then((value) {
-                  getNumber().then((value) {
-                    setState(() {
-                      result = value.toString();
-                    });
-                  }).catchError((e) {
-                    setState(() {
-                      result = 'An error has occured!';
-                    });
-                  });
-                });
+                returnFG();
               },
+              //   count(); //tambahhkan metod count() pada onPressed
+              //   setState(() {});
+              //   getData().then((value) {
+              //     result = value.body.toString().substring(0, 450);
+              //     setState(() {});
+              //   }).catchError((_) {
+              //     result = 'An error has occured!';
+              //     setState(() {});
+              //   });
+              //   getNumber().then((value) {
+              //     getNumber().then((value) {
+              //       setState(() {
+              //         result = value.toString();
+              //       });
+              //     }).catchError((e) {
+              //       setState(() {
+              //         result = 'An error has occured!';
+              //       });
+              //     });
+              //   });
+              // },
             ),
             const Spacer(),
             Text(result),
@@ -120,5 +123,43 @@ class _FuturePageState extends State<FuturePage> {
   Future calculate() async {
     await Future.delayed(const Duration(seconds: 5));
     completer.complete(42);
+  }
+
+  // void returnFG() {
+  //   FutureGroup<int> futureGroup = FutureGroup<int>();
+  //   futureGroup.add(returnOneAsync());
+  //   futureGroup.add(returnTwoAsync());
+  //   futureGroup.add(returnThreeAsync());
+  //   futureGroup.close();
+  //   futureGroup.future.then((List<int> value) {
+  //     int total = 0;
+  //     for (var element in value) {
+  //       total += element;
+  //     }
+  //     setState(() {
+  //       result = total.toString();
+  //     });
+  //   });
+  // }
+
+  void returnFG() async {
+    final futures = Future.wait<int>([
+      returnOneAsync(),
+      returnTwoAsync(),
+      returnThreeAsync(),
+    ]);
+
+    try {
+      List<int> values = await futures;
+
+      int total = values.fold(0, (acc, element) => acc + element);
+
+      setState(() {
+        result = total.toString();
+      });
+    } catch (error) {
+      // Handle errors if needed
+      print("Error: $error");
+    }
   }
 }
