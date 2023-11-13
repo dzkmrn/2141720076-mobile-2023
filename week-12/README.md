@@ -253,8 +253,6 @@ getNumber().then((value){
 #### Langkah 4:
 Terakhir, run atau tekan F5 untuk melihat hasilnya jika memang belum running. Bisa juga lakukan hot restart jika aplikasi sudah running. Maka hasilnya akan seperti gambar berikut ini. Setelah 5 detik, maka angka 42 akan tampil.
 
-<img src = ''>
-
 ### Soal 5
 - Jelaskan maksud kode langkah 2 tersebut!
 
@@ -263,4 +261,7 @@ Terakhir, run atau tekan F5 untuk melihat hasilnya jika memang belum running. Bi
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 5".
 
   >> Jawaban: Sudah.
+
+  <img src = 'docs/prak4a.gif'>
+
 
