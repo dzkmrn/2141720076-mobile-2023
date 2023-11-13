@@ -152,3 +152,65 @@ Lakukan run aplikasi Flutter Anda. Anda akan melihat tampilan akhir seperti gamb
   OUTPUT: 
 
   <img src = 'docs/prak1c.gif'>
+
+--- 
+
+
+### Praktikum 2: Menggunakan await/async untuk menghindari callbacks
+
+#### Langkah 1: Buka file main.dart
+Tambahkan tiga method berisi kode seperti berikut di dalam class _FuturePageState.
+
+```dart
+Future<int> returnOneAsync() async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 1;
+}
+
+Future<int> returnTwoAsync() async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 2;
+}
+
+Future<int> returnThreeAsync() async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 3;
+}
+```
+
+#### Langkah 2: Tambah method count()
+Lalu tambahkan lagi method ini di bawah ketiga method sebelumnya.
+
+```dart
+  Future count() async {
+    int total = 0;
+    total = await returnOneAsync();
+    total += await returnTwoAsync();
+    total += await returnThreeAsync();
+    setState(() {
+      result = total.toString();
+    });
+  }
+```
+
+#### Langkah 3: Pangil count()
+Lakukan comment kode sebelumnya, ubah isi kode onPressed() menjadi seperti berikut.
+
+```dart
+  onPressed: () {
+   count(); //tambahhkan metod count() pada onPressed
+```
+
+### Langkah 4: Run
+Akhirnya, run atau tekan F5 jika aplikasi belum running. Maka Anda akan melihat seperti gambar berikut, hasil angka 6 akan tampil setelah delay 9 detik.
+
+### Soal 4
+- Jelaskan maksud kode langkah 1 dan 2 tersebut!
+
+  >> Jawaban: Langkah satu merupakan implementasi pemrograman asynchronous dengan mencoba membuat 3 method yang memiliki return 1, 2, dan 3 dengan durasi return-nya 3 detik (total 9 dtk) menggunakan Future.delayed. Kemudian di langkah ketiga, dibuat method count() yang akan mengumpulkan tiga method returnAsync tersebut. Sehingga ketika program dijalankan, muncul angka 6 di detik ke-9 setelah method jalan. 
+
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 4". 
+
+  <img src = 'docs/prak2.gif'>
+
