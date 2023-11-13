@@ -577,5 +577,65 @@ else if (snapshot.connectionState == ConnectionState.done) {
 
   <img src = 'docs/prak7a.gif'>
 
+## Praktikum 8: Navigation route dengan Future Function
 
+#### Langkah 1: Buat file baru navigation_first.dart
+Buatlah file baru ini di project lib Anda.
+
+#### Langkah 2: Isi kode navigation_first.dart
+```dart
+
+```
+
+### Soal 15
+- Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
+- Silakan ganti dengan warna tema favorit Anda.
+
+  >> Jawaban: 
+  <img src = ''>
+
+#### Langkah 3: Tambah method di class _NavigationFirstState
+Tambahkan method ini.
+
+```dart
+Future _navigateAndGetColor(BuildContext context) async {
+   color = await Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const NavigationSecond()),) ?? Colors.blue;
+   setState(() {});
+   });
+}
+```
+
+#### Langkah 4: Buat file baru navigation_second.dart
+Buat file baru ini di project lib Anda. Silakan jika ingin mengelompokkan view menjadi satu folder dan sesuaikan impor yang dibutuhkan.
+
+#### Langkah 5: Buat class NavigationSecond dengan StatefulWidget
+```dart
+
+```
+
+#### Langkah 6: Edit main.dart
+Lakukan edit properti home.
+
+#### Langkah 7: Run
+Lakukan run, jika terjadi error silakan diperbaiki.
+
+### Soal 16
+- Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+
+  >> Jawaban: Ketika tombol "Change Color" ditekan, maka akan pindah ke navigationo_second, yang didalamnya terdapat tiga tombol yaitu Red, Green, Blue, dan jika ditekan akan kembali ke navigation_first tetapi dengan warna background yang sesuai dengan tulisan tombolnya. Hal tersebut terejadi dikarekanakn ketika di navigation_first, kita telah inisialisasi variabel color yang memiliki nilai default green, kemudian ketika pindah ke navigation_second dan dengan meng-klik tombol2 terrsebut akan mengubah nilai pada color ketika pindah ke navigation_first kembali. 
+
+  <img src = 'docs/prak8.gif'>
+
+- Gantilah 3 warna pada langkah 5 dengan warna favorit Anda!
+
+  >> Jawaban: Disini saya mencoba mengubahnya ke purple, grrey, black
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 16".
+
+  >> Jawaban:
+
+  OUTPUT: 
+
+  <img src = 'docs/prak8a.gif'>
 
