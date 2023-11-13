@@ -6,7 +6,7 @@ Di minggu dua belas ini, mahasiswa akan mempelajari pemrograman asynchronous dan
 
 >> [@dzkmrn](https://www.github.com/dzkmrn)
 
-### Praktikum 1: Mengunduh Data dari Web Service (API)
+## Praktikum 1: Mengunduh Data dari Web Service (API)
 
 
 #### Langkah 1: Siapkan project baru
@@ -156,7 +156,7 @@ Lakukan run aplikasi Flutter Anda. Anda akan melihat tampilan akhir seperti gamb
 --- 
 
 
-### Praktikum 2: Menggunakan await/async untuk menghindari callbacks
+## Praktikum 2: Menggunakan await/async untuk menghindari callbacks
 
 #### Langkah 1: Buka file main.dart
 Tambahkan tiga method berisi kode seperti berikut di dalam class _FuturePageState.
@@ -213,4 +213,54 @@ Akhirnya, run atau tekan F5 jika aplikasi belum running. Maka Anda akan melihat 
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 4". 
 
   <img src = 'docs/prak2.gif'>
+
+## Praktikum 3: Menggunakan Completer di Future
+
+#### Langkah 1: Buka main.dart
+```dart
+import 'package:async/async.dart';
+```
+
+#### Langkah 2: Tambahkan variabel dan method
+Tambahkan variabel late dan method di class _FuturePageState seperti ini.
+
+```dart
+late Completer completer;
+
+Future getNumber() {
+  completer = Completer<int>();
+  calculate();
+  return completer.future;
+}
+
+Future calculate() async {
+  await Future.delayed(const Duration(seconds : 5));
+  completer.complete(42);
+}
+```
+
+#### Langkah 3: Ganti isi kode onPressed()
+Tambahkan kode berikut pada fungsi onPressed(). Kode sebelumnya bisa Anda comment.
+
+```dart
+getNumber().then((value){
+  setState((){
+    result = value.toString();
+  });
+});
+```
+
+#### Langkah 4:
+Terakhir, run atau tekan F5 untuk melihat hasilnya jika memang belum running. Bisa juga lakukan hot restart jika aplikasi sudah running. Maka hasilnya akan seperti gambar berikut ini. Setelah 5 detik, maka angka 42 akan tampil.
+
+<img src = ''>
+
+### Soal 5
+- Jelaskan maksud kode langkah 2 tersebut!
+
+  >> Jawaban: Disitu diinisialisasikan variabel completer yang bertipe data late, dan dua method, yaitu getNumber() dan calculate(). Method getNumber() digunakan untuk menjalankan fungsi calculate() yang akan me-return completer.future. Method calculate akan menjalankan Future.delayed selama 5 detik untuk kemudian return complete(42) yang berarti pasti akan me-return kembali 42. 
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 5".
+
+  >> Jawaban: Sudah.
 

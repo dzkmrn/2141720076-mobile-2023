@@ -31,6 +31,8 @@ class FuturePage extends StatefulWidget {
 
 class _FuturePageState extends State<FuturePage> {
   String result = '';
+  late Completer completer;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +54,11 @@ class _FuturePageState extends State<FuturePage> {
                 }).catchError((_) {
                   result = 'An error has occured!';
                   setState(() {});
+                });
+                getNumber().then((value) {
+                  setState(() {
+                    result = value.toString();
+                  });
                 });
               },
             ),
@@ -96,5 +103,16 @@ class _FuturePageState extends State<FuturePage> {
     const path = '/books/v1/volumes/FzVjBgAAQBAJ';
     Uri url = Uri.https(authority, path);
     return http.get(url);
+  }
+
+  Future getNumber() {
+    completer = Completer<int>();
+    calculate();
+    return completer.future;
+  }
+
+  Future calculate() async {
+    await Future.delayed(const Duration(seconds: 5));
+    completer.complete(42);
   }
 }
