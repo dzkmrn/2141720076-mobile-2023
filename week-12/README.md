@@ -484,3 +484,75 @@ Tambahkan widget loading seperti kode berikut. Lalu hot restart, perhatikan peru
   OUTPUT
 
   <img src = 'docs/prak6.gif'>
+
+## Praktikum 7: Manajemen Future dengan FutureBuilder
+
+#### Langkah 1: Modifikasi method getPosition()
+Buka file geolocation.dart kemudian ganti isi method dengan kode ini.
+
+```dart
+await Future.delayed(const Duration(seconds: 3));
+```
+
+#### Langkah 2: Tambah variabel
+Tambah variabel ini di class _LocationScreenState
+
+```dart
+Future<Position>? position;
+```
+
+#### Langkah 3: Tambah initState()
+Tambah method ini dan set variabel position
+
+```dart
+  @override
+  void initState() {
+    super.initState();
+    position = getPosition();
+  }
+```
+
+#### Langkah 4: Edit method build()
+Ketik kode berikut dan sesuaikan. Kode lama bisa Anda comment atau hapus.
+
+```dart
+  @override
+  Widget build(BuildContext context) {
+    final myWidget =
+        myPosition == '' ? const CircularProgressIndicator() : Text(myPosition);
+
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Dzaka Current Location'),
+        ),
+        body: Center(
+          child: FutureBuilder(
+            future: position,
+            builder: (BuildContext context, AsyncSnapshot<Position> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const CircularProgressIndicator();
+              } else if (snapshot.connectionState == ConnectionState.done) {
+                return Text(snapshot.data.toString());
+              } else {
+                return const Text('');
+              }
+            },
+          ),
+        ));
+  }
+```
+
+### Soal 13
+- Apakah ada perbedaan UI dengan praktikum sebelumnya? Mengapa demikian?
+
+  >> Jawaban: Tidak ada perbedaan, hal tersebut dikarenakan kita hanya mengumpulkan keseluruhan proses getlocation mulai dari izin hingga tampil gps location di FutureBuilder agar lebih efisien dan mudah untuk diubah-ubah dalam pengembangan ke depan. 
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 13".
+
+  OUTPUT: 
+
+  <img src = 'docs/prak7.gif'>
+
+Seperti yang Anda lihat, menggunakan FutureBuilder lebih efisien, clean, dan reactive dengan Future bersama UI.
+
+
