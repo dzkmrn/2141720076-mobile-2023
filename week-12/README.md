@@ -555,4 +555,27 @@ Ketik kode berikut dan sesuaikan. Kode lama bisa Anda comment atau hapus.
 
 Seperti yang Anda lihat, menggunakan FutureBuilder lebih efisien, clean, dan reactive dengan Future bersama UI.
 
+#### Langkah 5: Tambah handling error
+Tambahkan kode berikut untuk menangani ketika terjadi error. Kemudian hot restart.
+
+```dart
+else if (snapshot.connectionState == ConnectionState.done) {
+  if (snapshot.hasError) {
+     return Text('Something terrible happened!');
+  }
+  return Text(snapshot.data.toString());
+}
+```
+
+### Soal 14
+- Apakah ada perbedaan UI dengan langkah sebelumnya? Mengapa demikian?
+  >> Jawaban: Tidak ada, karena baris kode tersebut hanya sebagai error handling yang akan me-return text tertulis apabila kondisi tersebut tidak terpenuhi (error). 
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 14".
+
+  OUTPUT: 
+
+  <img src = 'docs/prak7a.gif'>
+
+
 
