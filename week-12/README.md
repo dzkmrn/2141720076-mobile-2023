@@ -584,7 +584,47 @@ Buatlah file baru ini di project lib Anda.
 
 #### Langkah 2: Isi kode navigation_first.dart
 ```dart
+import 'package:flutter/material.dart';
+import 'navigation_second.dart';
 
+class NavigationFirst extends StatefulWidget {
+  const NavigationFirst({super.key});
+
+  @override
+  State<NavigationFirst> createState() => _NavigationFirstState();
+}
+
+class _NavigationFirstState extends State<NavigationFirst> {
+  Color color = Colors.green.shade200;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: color,
+        appBar: AppBar(
+          title: const Text('Dzaka Navigation First Screen'),
+        ),
+        body: Center(
+          child: ElevatedButton(
+            child: const Text('Change Color'),
+            onPressed: () {
+              setState(() {
+                _navigateAndGetColor(context);
+              });
+            },
+          ),
+        ));
+  }
+
+  Future _navigateAndGetColor(BuildContext context) async {
+    color = await Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const NavigationSecond()),
+        ) ??
+        Colors.green;
+    setState(() {});
+  }
+}
 ```
 
 ### Soal 15
@@ -611,7 +651,54 @@ Buat file baru ini di project lib Anda. Silakan jika ingin mengelompokkan view m
 
 #### Langkah 5: Buat class NavigationSecond dengan StatefulWidget
 ```dart
+import 'package:flutter/material.dart';
 
+class NavigationSecond extends StatefulWidget {
+  const NavigationSecond({super.key});
+
+  @override
+  State<NavigationSecond> createState() => _NavigationSecondState();
+}
+
+class _NavigationSecondState extends State<NavigationSecond> {
+  @override
+  Widget build(BuildContext context) {
+    Color color;
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Dzaka Navigation Second Screen'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ElevatedButton(
+              child: const Text('Purple'),
+              onPressed: () {
+                color = Colors.purple.shade700;
+                Navigator.pop(context, color);
+              },
+            ),
+            ElevatedButton(
+              child: const Text('Grey'),
+              onPressed: () {
+                color = Colors.grey.shade700;
+                Navigator.pop(context, color);
+              },
+            ),
+            ElevatedButton(
+              child: const Text('Black'),
+              onPressed: () {
+                color = Colors.black;
+                Navigator.pop(context, color);
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 ```
 
 #### Langkah 6: Edit main.dart
@@ -639,3 +726,40 @@ Lakukan run, jika terjadi error silakan diperbaiki.
 
   <img src = 'docs/prak8a.gif'>
 
+## Praktikum 9: Memanfaatkan async/await dengan Widget Dialog
+
+#### Langkah 1: Buat file baru navigation_dialog.dart
+Buat file dart baru di folder lib project Anda.
+
+#### Langkah 2: Isi kode navigation_dialog.dart
+
+#### Langkah 3: Tambah method async
+
+#### Langkah 4: Panggil method di ElevatedButton
+
+#### Langkah 5: Edit main.dart
+Ubah properti home
+
+#### Langkah 6: Run
+Coba ganti warna background dengan widget dialog tersebut. Jika terjadi error, silakan diperbaiki. Jika berhasil, akan tampil seperti gambar berikut.
+
+### Soal 17
+- Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+
+  >> Jawaban: Ketika kita mengklik "Change Coclor" maka akan muncul dialog dengan tulisan "Very Important Question" dan tiga tombol pilihan yang jika di klik setiap tombol pilihan terrsebut akan dijalankan setState() dengan color sesuai setiap tulissan tombol tersebut. Sehingga color di background.colorr akan berubah sesuai state tersebut. 
+
+  <img src = 'docs/prak9ra.gif'>
+
+
+- Gantilah 3 warna pada langkah 3 dengan warna favorit Anda!
+
+  >> Jawaban: Disini saya menncoba mengubahnya menjadi purple, grey, dan black kembali. 
+
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 17".
+
+  >> Jawaban: 
+
+  OUTPUT AKHIR: 
+
+  <img src = 'docs/prak9r.gif'>
