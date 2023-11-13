@@ -435,4 +435,52 @@ Tambahkan kode ini di dalam class _FutureStatePage
 
   >> Penjelasan: Hasilnya adalah throw exception atau output error yang muncul lebih cepat (sekitar 2 dtk). Karena ketika ketika terjadi error dari returnError() yang ditangkap dengan try and catch, akan me-result error lagi sehingga muncul error-nya lebih cepat. 
 
-  
+## Praktikum 6: Menggunakan Future dengan StatefulWidget
+
+#### Langkah 1: install plugin geolocator
+Tambahkan plugin geolocator dengan mengetik perintah berikut di terminal.
+
+```
+flutter pub add geolocator
+```
+
+#### Langkah 2: Tambah permission GPS
+Jika Anda menargetkan untuk platform Android, maka tambahkan baris kode berikut di file android/app/src/main/androidmanifest.xml
+
+#### Langkah 3: Buat file geolocation.dart
+Tambahkan file baru ini di folder lib project Anda.
+
+#### Langkah 4: Buat StatefulWidget
+Buat class LocationScreen di dalam file geolocation.dart
+
+#### Langkah 5: Isi kode geolocation.dart
+
+### Soal 11
+- Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
+
+#### Langkah 6: Edit main.dart
+Panggil screen baru tersebut di file main Anda seperti berikut.
+
+#### Langkah 7: Run
+Run project Anda di device atau emulator (bukan browser), maka akan tampil seperti berikut ini.
+
+#### Langkah 8: Tambahkan animasi loading
+Tambahkan widget loading seperti kode berikut. Lalu hot restart, perhatikan perubahannya
+
+### Soal 12
+- Jika Anda tidak melihat animasi loading tampil, kemungkinan itu berjalan sangat cepat. Tambahkan delay pada method getPosition() dengan kode await Future.delayed(const Duration(seconds: 3))
+
+- Apakah Anda mendapatkan koordinat GPS ketika run di browser? Mengapa demikian?
+
+  >>Jawaban: Karena package geolocator juga support di browser, sehingga koordinat GPS juga bisa didapatkan pada browser, beserta izinnya. 
+
+  <img src = 'docs/ss05.png'>
+
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 12".
+
+  >>Jawaban
+
+  OUTPUT
+
+  <img src = 'docs/prak6.gif'>
