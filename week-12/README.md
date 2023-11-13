@@ -264,4 +264,28 @@ Terakhir, run atau tekan F5 untuk melihat hasilnya jika memang belum running. Bi
 
   <img src = 'docs/prak4a.gif'>
 
+  #### Langkah 6: Pindah ke onPressed()
+Ganti menjadi kode seperti berikut.
+```dart
+getNumber().then((value){
+  setState((){
+    result = value.toString();
+  }).catchError((e){
+    result = 'An error occured';
+  });
+});
+```
+
+### Soal 6
+- Jelaskan maksud perbedaan kode langkah 2 dengan langkah 5-6 tersebut!
+
+  >>Jawaban: Perbedaannya ada pada penaruhan catchError() sebagai alternatif jika value-nya tidak sesuai (error) maka akan return "An errror Occured". Tetapi pada kasus ini tidak terjadi error sehingga output-nya sama
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 6".
+  
+  >>Jawaban:
+
+  <img src = 'docs/prak4a.gif'>
+
+
 
