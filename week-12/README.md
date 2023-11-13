@@ -367,3 +367,72 @@ diubah menjadi berikut:
 - Jelaskan maksud perbedaan kode langkah 1 dan 4!
   >> Jawaban: Perbedaan kode langkah 1 dan 4 adalah efisiensi baris kodenya, fungsinya sama, tetapi dengan menggabungkannya di list final futures, kode yang ditulis akan lebih sedikit. 
 
+## Praktikum 5: Menangani Respon Error pada Async Code
+
+#### Langkah 1: Buka file main.dart
+Tambahkan method ini ke dalam class _FuturePageState
+
+```dart
+  Future returnError() async {
+    await Future.delayed(const Duration(seconds: 2));
+    throw Exception('Something terrible happened!');
+  }
+```
+
+
+#### Langkah 2: ElevatedButton
+Ganti dengan kode berikut
+
+```dart
+            ElevatedButton(
+                child: const Text('GO!'),
+                onPressed: () {
+                  returnError().then((value) {
+                    setState(() {
+                      result = 'Success!';
+                    });
+                  }).catchError((onError) {
+                    setState(() {
+                      result = onError.toString();
+                    });
+                  }).whenComplete(() => print('Completed'));
+                }),
+```
+
+#### Langkah 3: Run
+Lakukan run dan klik tombol GO! maka akan menghasilkan seperti gambar berikut.
+
+### Soal 9
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 9".
+
+  OUTPUT: 
+
+  <img src = 'docs/prak5a.gif'>
+
+#### Langkah 4: Tambah method handleError()
+Tambahkan kode ini di dalam class _FutureStatePage
+
+```dart
+  Future handleError() async {
+    try {
+      await returnError();
+    } catch (error) {
+      setState(() {
+        result = error.toString();
+      });
+    } finally {
+      print('Complete');
+    }
+  }
+```
+
+### Soal 10
+- Panggil method handleError() tersebut di ElevatedButton, lalu run. Apa hasilnya? Jelaskan perbedaan kode langkah 1 dan 4!
+
+  OUTPUT: 
+  
+  <img src = 'docs/prak5b.gif'>
+
+  >> Penjelasan: Hasilnya adalah throw exception atau output error yang muncul lebih cepat (sekitar 2 dtk). Karena ketika ketika terjadi error dari returnError() yang ditangkap dengan try and catch, akan me-result error lagi sehingga muncul error-nya lebih cepat. 
+
+  
