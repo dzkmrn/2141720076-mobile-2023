@@ -6,7 +6,7 @@ Di minggu kedelapan ini, mahasiswa akan mempelajari perpindahan halaman di Flutt
 
 >> [@dzkmrn](https://www.github.com/dzkmrn)
 
-### Praktikum | Membangun Navigasi di Flutter
+### Praktikum | Manajemen Plugin di Flutter
 
 #### Langkah 1: Siapkan project baru
 Buatlah sebuah project flutter baru dengan nama flutter_plugin_pubdev. Lalu jadikan repository di GitHub Anda dengan nama flutter_plugin_pubdev.
@@ -172,4 +172,4 @@ Container(
 
 6.Kumpulkan laporan praktikum Anda berupa link repository GitHub ke spreadsheet yang telah disediakan!
 
->> Jawaban: Sudah Pakk ^^
+>> Jawaban: Sudah Pakk ^^=
