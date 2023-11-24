@@ -59,5 +59,52 @@ class _StreamHomePageState extends State<StreamHopePage>{
 
     <img src = 'docs/ss01.png'>
 
+    Sudah di-commit.
+
+
+#### Langkah 3: Buat file baru stream.dart
+Buat file baru di folder lib project Anda. Lalu isi dengan kode berikut.
+
+```dart
+import 'package:flutter/material.dart';
+
+class ColorStream{
+  
+}
+```
+
+#### Langkah 4: Tambah variabel colors
+Tambahkan variabel di dalam class ColorStream seperti berikut.
+
+```dart
+class ColorStream {
+  final List<Color> colors = [
+    Colors.blueGrey,
+    Colors.amber,
+    Colors.deepPurple,
+    Colors.lightBlue,
+    Colors.teal
+  ];
+}
+```
+
+### Soal 2
+- Tambahkan 5 warna lainnya sesuai keinginan Anda pada variabel colors tersebut.
+    >>Jawaban: 
+
+    ```dart
+    Colors.lightBlueAccent,
+    Colors.pink,
+    Colors.brown,
+    Colors.blueAccent,
+    Colors.grey
+    ```
+- Lakukan commit hasil jawaban Soal 2 dengan pesan "W13: Jawaban Soal 2"
+
+    >> Jawaban: Sudah di-commit.
+
+
+
+
 
 
