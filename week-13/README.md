@@ -195,6 +195,25 @@ Lakukan running pada aplikasi Flutter Anda, maka akan terlihat berubah warna bac
 
     >> Jawaban: Sudah di-commit. 
 
+#### Langkah 13: Ganti isi method changeColor()
+Anda boleh comment atau hapus kode sebelumnya, lalu ketika kode seperti berikut.
+
+```dart
+colorStream.getColors().listen((eventColor) {
+  setState((){
+      bgColor = eventColor;
+  });
+});
+```
+
+### Soal 5
+- Jelaskan perbedaan menggunakan listen dan await for (langkah 9) !
+
+    >> Jawaban: Perbedaannya terletak pada cara mendengarkan nilai dari stream: await for secara langsung menunggu nilai baru, sementara listen() berfungsi sebagai pemanggilan balik (callback) yang dipanggil setiap kali nilai baru dikirimkan oleh stream. Keduanya akan melakukan hal yang sama dalam hal memperbarui bgColor dengan nilai terbaru dari stream, tetapi dengan pendekatan yang berbeda dalam pemrosesan aliran nilainya.
+
+- Lakukan commit hasil jawaban Soal 5 dengan pesan "W13: Jawaban Soal 5"
+
+    >> Jawaban: Sudah di-commit.
 
 
 
