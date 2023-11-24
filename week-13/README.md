@@ -103,6 +103,35 @@ class ColorStream {
 
     >> Jawaban: Sudah di-commit.
 
+#### Langkah 5: Tambah method getColors()
+Di dalam class ColorStream ketik method seperti kode berikut. Perhatikan tanda bintang di akhir keyword async* (ini digunakan untuk melakukan Stream data)
+
+#### Langkah 6: Tambah perintah yield*
+Tambahkan kode berikut ini.
+
+```dart
+yield* Stream.periodic(
+  const Duration(seconds: 1), (int t) {
+    int index = t % colors.length;
+    return colors[index];
+});
+```
+
+### Soal 3
+- Jelaskan fungsi keyword yield* pada kode tersebut!
+
+    >> Jawaban: Keyword yield digunakan untuk mengembalikan nilai pada stream tersebut sembari program berjalan, hingga tidak ada lagi nilai yang dikembalikan. 
+
+- Apa maksud isi perintah kode tersebut?
+
+    >> Jawaban: Di dalam fungsi tersebut, terdapat perhitungan untuk menentukan nilai yang akan dikirimkan oleh stream. t % colors.length menggunakan operator modulo (%) untuk mendapatkan sisa bagi dari pembagian t dengan panjang dari array colors. Ini menghasilkan indeks dalam array colors berdasarkan waktu yang telah berlalu. Kemudian, nilai yang sesuai dengan indeks ini akan dikirimkan oleh stream.
+  
+- Lakukan commit hasil jawaban Soal 3 dengan pesan "W13: Jawaban Soal 3"
+    >> Jawaban: Sudah di-commit.
+
+    
+
+
 
 
 
