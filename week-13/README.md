@@ -215,13 +215,130 @@ colorStream.getColors().listen((eventColor) {
 
     >> Jawaban: Sudah di-commit.
 
+## Praktikum 2: Stream controllers dan sinks
 
+#### Langkah 1: Buka file stream.dart
+Lakukan impor dengan mengetik kode ini.
 
+```dart
+import 'dart:async';
+```
 
+#### Langkah 2: Tambah class NumberStream
 
+Tetap di file stream.dart tambah class baru seperti berikut.
 
+```dart
+class NumberStream{
 
+}
+```
 
+#### Langkah 3: Tambah StreamController
+Di dalam class NumberStream buatlah variabel seperti berikut.
 
+```dart
+final StreamController<int> controller = StraemController<int>();
+```
 
+#### Langkah 4: Tambah method addNumberToSink
+Tetap di class NumberStream buatlah method ini
 
+```dart
+void addNumberToSink(int newNumber){
+  controller.sink.add(newNumber);
+}
+```
+
+#### Langkah 5: Tambah method close()
+
+```dart
+close() {
+    controller.close();
+}
+```
+
+#### Langkah 6: Buka main.dart
+Ketik kode import seperti berikut
+
+```dart
+import 'dart:async';
+import 'dart:math';
+```
+
+#### Langkah 7: Tambah variabel
+Di dalam class _StreamHomePageState ketik variabel berikut
+
+```dart
+int lastNumber = 0;
+late StreamController numberStreamController;
+late NumberStream numberStream;
+```
+
+#### Langkah 8: Edit initState()
+
+```dart
+@override
+void initState() {
+    numberStream = NumberStream();
+    numberStreamController = numberStream.controller;
+    Stream stream = numberStreamController.stream;
+    stream.listen((event){
+        setState((){
+            lastNumber = event;
+        });
+    });
+    super.initState();
+}
+```
+
+#### Langkah 9: Edit dispose()
+
+```dart
+@override
+void dispose () {
+    numberStreamController.close();
+    super.dispose();
+}
+```
+
+#### Langkah 10: Tambah method addRandomNumber()
+```dart
+void addRandomNumber() {
+  Random random = Random();
+  int myNum = random.nextInt(10);
+  numberStream.addNumberToSink(myNum);
+}
+```
+
+#### Langkah 11: Edit method build()
+
+```dart
+body: SizedBox(
+    width: double.infinity,
+    child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+            Text(lastNumber.toString()),
+            ElevatedButton(
+                onPressed: () => addrandomNumber(),
+                child: Text('New Random Number'),
+            )
+        ].
+    ),
+)
+```
+
+#### Langkah 12: Run
+Lakukan running pada aplikasi Flutter Anda, maka akan terlihat seperti gambar berikut.
+
+### Soal 6
+- Jelaskan maksud kode langkah 8 dan 10 tersebut!
+
+    >> Jawaban: Di langkah 8 (initState()), proses initState() dipanggil saat widget pertama kali dibuat. Di sini, objek NumberStream dibuat dan numberStreamController diinisialisasi menggunakan controller dari NumberStream. Kemudian, sebuah Stream diinisialisasi dari controller dan dipantau dengan listen() untuk mendapatkan nilai-nilai dari stream tersebut. Ketika nilai baru diterima, setState() dipanggil untuk memperbarui lastNumber dengan nilai terbaru dari stream. Langkah ini memastikan bahwa widget merespons perubahan pada stream dengan memperbarui tampilan sesuai dengan nilai terbaru yang diterima. Di langkah 9 (dispose()), proses dispose() dipanggil saat widget dihapus dari tampilan. Pada langkah ini, numberStreamController ditutup dengan memanggil metode close() untuk membersihkan sumber daya yang digunakan oleh controller stream. Ini merupakan praktik yang baik untuk memastikan bahwa sumber daya yang terkait dengan stream atau controller dilepaskan dengan benar saat widget tidak lagi digunakan, mencegah kebocoran memori atau masalah sumber daya lainnya.
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+    <img src = 'docs/prakB.gif'>
+- Lalu lakukan commit dengan pesan "W13: Jawaban Soal 6".
+    >> Jawaban: Sudah di-commmit.
