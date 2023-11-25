@@ -30,6 +30,10 @@ class NumberStream {
     controller.sink.add(newNumber);
   }
 
+  addError() {
+    controller.sink.addError('error');
+  }
+
   close() {
     controller.close();
   }

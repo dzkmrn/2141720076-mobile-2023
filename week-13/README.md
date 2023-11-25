@@ -342,3 +342,62 @@ Lakukan running pada aplikasi Flutter Anda, maka akan terlihat seperti gambar be
     <img src = 'docs/prakB.gif'>
 - Lalu lakukan commit dengan pesan "W13: Jawaban Soal 6".
     >> Jawaban: Sudah di-commmit.
+
+  
+#### Langkah 13: Buka stream.dart
+Tambahkan method berikut ini.
+
+```dart
+addError(){
+    controller.sink.addError('error');
+}
+```
+
+#### Langkah 14: Buka main.dart
+Tambahkan method onError di dalam class StreamHomePageState pada method listen di fungsi initState() seperti berikut ini.
+
+```dart
+stream.listen((event){
+    setState((){
+        lastNumber = event;
+    });
+    }).onError((error){
+    setState(() {
+        lastNumber = -1;
+    });
+});
+```
+
+#### Langkah 15: Edit method addRandomNumber()
+Lakukan comment pada dua baris kode berikut, lalu ketik kode seperti berikut ini.
+
+```dart
+void addRandomNumber(){
+    Random random = random();
+    // int myNum = random.nextInt(10);
+    // numberStream.addNumberToSink(myNum);
+    numberStream.addError();
+}
+```
+
+### Soal 7
+- Jelaskan maksud kode langkah 13 sampai 15 tersebut!
+
+  >> Jawaban: Pada langkah 14, ditambahkan method onError di dalam StreamHomePageState untuk menangani kesalahan yang mungkin terjadi pada stream yang sedang dengarkan. Ini memungkinkan kita untuk mengubah lastNumber menjadi -1 ketika terjadi error dalam stream. Pada langkah 15, dalam method addRandomNumber(), daripada menambahkan angka acak ke dalam stream, kita menggunakan numberStream.addError() untuk sengaja menimbulkan error di dalam stream. Akibatnya, onError yang sudah ditambahkan sebelumnya akan menangkap error tersebut dan mengubah lastNumber menjadi -1 sesuai dengan penanganan error yang sudah ditetapkan sebelumnya.
+
+  <img src = 'docs/prakc.gif'>
+
+- Kembalikan kode seperti semula pada Langkah 15, comment addError() agar Anda dapat melanjutkan ke praktikum 3 berikutnya.
+  >> Sudah.
+- Lalu lakukan commit dengan pesan "W13: Jawaban Soal 7".
+  >> Sudah di-commit.
+
+
+
+
+
+
+
+
+
+  
