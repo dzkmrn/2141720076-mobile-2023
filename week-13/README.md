@@ -392,12 +392,58 @@ void addRandomNumber(){
 - Lalu lakukan commit dengan pesan "W13: Jawaban Soal 7".
   >> Sudah di-commit.
 
+## Praktikum 3: Injeksi data ke streams
 
+#### Langkah 1: Buka main.dart
+Tambahkan variabel baru di dalam class _StreamHomePageState
 
+```dart
+late StreamTransformer transformer;
+```
 
+#### Langkah 2: Tambahkan kode ini di initState
 
+```dart
+transformer = StreamTransformer<int, int>.fromHandlers(
+    handleData: (value,sink){
+        sink.add(value * 10);
+    },
+    handleError: (error,trace,sink){
+        sink.Add(-1);
+    },
+    handleDone: (sink) => sink.close());
+```
 
+#### Langkah 3: Tetap di initState
+Lakukan edit seperti kode berikut.
 
+```dart
+stream.transform(transformer).listen((event){
+    setState((){
+        lastNumber = event;
+    });
+}).onError((error){
+    setState((){
+        lastNumber = -1;
+    });
+});
+super.initState();
+```
 
+#### Langkah 4: Run
+Terakhir, run atau tekan F5 untuk melihat hasilnya jika memang belum running. Bisa juga lakukan hot restart jika aplikasi sudah running. Maka hasilnya akan seperti gambar berikut ini. Anda akan melihat tampilan angka dari 0 hingga 90.
 
+### Soal 8
+- Jelaskan maksud kode langkah 1-3 tersebut!
+
+  >> Jawaban: 
+Langkah-langkah tersebut menambahkan kemampuan transformasi pada sebuah Stream di aplikasi Dart. Pertama, dengan mendefinisikan variabel transformer sebagai StreamTransformer, kita siapkan objek untuk mengubah data dalam stream. Di initState, transformer diatur untuk mengalikan nilai input dengan 10 dalam handleData dan menetapkan nilai -1 saat ada error dalam handleError. Langkah terakhir menghubungkan transformer ke stream yang di-observe. Ketika data masuk, transformasi akan diterapkan. Jika terjadi error, penanganan error akan mengubah lastNumber menjadi -1, mengindikasikan adanya masalah dalam stream. Ini memungkinkan pengelolaan data masuk serta penanganan error dengan lebih efektif dalam proses observasi stream.
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+
+  <img src = 'docs/prakD.gif'>
+
+- Lalu lakukan commit dengan pesan "W13: Jawaban Soal 8".
+
+  >> Sudah di-commit.
   

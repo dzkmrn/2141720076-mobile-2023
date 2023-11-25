@@ -36,6 +36,7 @@ class _StreamHomePageState extends State<StreamHomePage> {
   int lastNumber = 0;
   late StreamController numberStreamController;
   late NumberStream numberStream;
+  late StreamTransformer transformer;
 
   @override
   Widget build(BuildContext context) {
@@ -80,8 +81,22 @@ class _StreamHomePageState extends State<StreamHomePage> {
   void initState() {
     numberStream = NumberStream();
     numberStreamController = numberStream.controller;
+    transformer = StreamTransformer<int, int>.fromHandlers(
+      handleData: (value, sink) {
+        sink.add(value * 10);
+      },
+      handleError: (error, trace, sink) {
+        if (error == 'error') {
+          sink.add(90);
+        } else {
+          sink.addError(error);
+        }
+      },
+      handleDone: (sink) => sink.close(),
+    );
+
     Stream stream = numberStreamController.stream;
-    stream.listen((event) {
+    stream.transform(transformer).listen((event) {
       setState(() {
         lastNumber = event;
       });
@@ -90,6 +105,7 @@ class _StreamHomePageState extends State<StreamHomePage> {
         lastNumber = -1;
       });
     });
+
     super.initState();
   }
 
@@ -101,9 +117,8 @@ class _StreamHomePageState extends State<StreamHomePage> {
 
   void addRandomNumber() {
     Random random = Random();
-    // langkah 15
-    // int myNum = random.nextInt(10);
-    // numberStream.addNumberToSink(myNum);
+    int myNum = random.nextInt(10);
+    numberStream.addNumberToSink(myNum);
     numberStream.addError();
   }
 }
