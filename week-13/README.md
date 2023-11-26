@@ -1,6 +1,6 @@
-# Week 13 - Pemrograman Asynchronous
+# Week 13 - Lanjutan State Management dengan Streams
 
-Di minggu dua belas ini, mahasiswa akan mempelajari pemrograman asynchronous dan pembuatan projek flutter books menggunakan konsep asynchronous.  
+Di minggu dua belas ini, mahasiswa akan mempelajari lanjutan state management dengan streams yang akan diterapkan melalui color changer, radom number generator, dsb. 
 
 ## Penulis
 
