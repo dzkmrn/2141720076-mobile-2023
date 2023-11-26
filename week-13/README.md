@@ -544,7 +544,7 @@ Anda akan melihat pesan di Debug Console seperti berikut.
 ### Soal 9
 - Jelaskan maksud kode langkah 2, 6 dan 8 tersebut!
 
->> Jawaban: 
+>> Jawaban: Langkah 2 memperbaiki inisialisasi dan pengaturan stream serta subscription pada method initState(), memungkinkan pemantauan perubahan stream untuk memperbarui nilai lastNumber yang tercermin dalam tampilan. Langkah 6 menambahkan fungsi stopStream() ke dalam dispose() agar ketika widget tidak lagi digunakan, numberStreamController dapat ditutup dengan aman, sementara langkah 8 memperbaiki metode addRandomNumber() untuk menambahkan nomor acak ke dalam stream hanya jika stream masih terbuka, sehingga memastikan keberlangsungan operasi tambahan.
 
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 
@@ -553,5 +553,81 @@ Anda akan melihat pesan di Debug Console seperti berikut.
 - Lalu lakukan commit dengan pesan "W13: Jawaban Soal 9".
 
 >> Sudah di-commit.
+
+## Praktikum 5: Multiple stream subscriptions
+
+#### Langkah 1: Buka file main.dart
+Ketik variabel berikut di class _StreamHomePageState
+
+```dart
+late StreamSubscription subscription2;
+String values = '';
+```
+
+#### Langkah 2: Edit initState()
+Ketik kode seperti berikut.
+
+```dart
+subscription = stream.listen((event){
+  setState((){
+    values += ' $event - ';
+  });
+});
+
+subscription2 = stream.listen((event){
+  setState((){
+    values += ' $event - ';
+  });
+});
+```
+
+#### Langkah 3: Run
+Lakukan run maka akan tampil error seperti gambar berikut.
+
+<img src = 'docs/ss02.png'>
+
+#### Soal 10
+- Jelaskan mengapa error itu bisa terjadi ?
+>> Jawaban: Error "Bad state: Stream has already been listened to" terjadi ketika kita mencoba mendengarkan stream yang sama lebih dari sekali. Dart tidak mengizinkan stream untuk didengarkan lebih dari satu kali, kecuali jika kita menggunakan asBroadcastStream() untuk mengonversi stream menjadi stream yang dapat didengarkan beberapa kali (broadcast).
+
+#### Langkah 4: Set broadcast stream
+Ketik kode seperti berikut di method initState()
+
+```dart
+void initState(){
+  numberStream = NumberStream();
+  numberStreamController = numberStream.controller;
+  Stream stream = numberStreamController.stream.asBrodcastStream();
+}
+```
+
+#### Langkah 5: Edit method build()
+Tambahkan text seperti berikut
+
+```dart
+child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(values),
+          ]
+```
+
+#### Langkah 6: Run
+Tekan button ‘New Random Number' beberapa kali, maka akan tampil teks angka terus bertambah sebanyak dua kali.
+
+### Soal 11
+- Jelaskan mengapa hal itu bisa terjadi ?
+
+  >> Jawaban: Ketika dua subscription ditambahkan ke stream yang sama pada langkah 2, keduanya berlangganan pada peristiwa yang sama di dalam stream. Ini menyebabkan setiap peristiwa baru dalam stream dieksekusi oleh kedua subscription, mengakibatkan nilai dari peristiwa tersebut ditambahkan dua kali ke variabel values. Kemudian, menggunakan asBroadcastStream() pada stream pada langkah 4 membuat setiap subscription yang terpasang pada stream menerima setiap peristiwa yang terjadi di dalam stream. Hasilnya, nilai peristiwa tersebut ditambahkan dua kali ke dalam values setiap kali button 'New Random Number' ditekan.
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+
+  <img src = 'docs/prakF.gif'>
+
+- Lalu lakukan commit dengan pesan "W13: Jawaban Soal 10,11".
+
+>> Jawaban: Sudah di-commit. 
+
 
 

@@ -36,6 +36,8 @@ class _StreamHomePageState extends State<StreamHomePage> {
   late StreamController<int> numberStreamController;
   late NumberStream numberStream;
   late StreamSubscription<int> subscription;
+  late StreamSubscription subscription2;
+  String values = '';
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,7 @@ class _StreamHomePageState extends State<StreamHomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(lastNumber.toString()),
+            Text(values),
             ElevatedButton(
               onPressed: () => addRandomNumber(),
               child: const Text('Add Random Number'),
@@ -81,7 +83,10 @@ class _StreamHomePageState extends State<StreamHomePage> {
     super.initState();
     numberStream = NumberStream();
     numberStreamController = numberStream.controller;
-    subscription = numberStreamController.stream.listen((int number) {
+    Stream<int> stream = numberStreamController.stream
+        .asBroadcastStream(); // Ubah menjadi broadcast sebelum didengarkan
+
+    subscription = stream.listen((int number) {
       setState(() {
         lastNumber = number;
       });
@@ -91,6 +96,12 @@ class _StreamHomePageState extends State<StreamHomePage> {
       });
     }, onDone: () {
       print('OnDone was called');
+    });
+
+    subscription2 = stream.listen((int event) {
+      setState(() {
+        values += ' $event - ';
+      });
     });
   }
 
