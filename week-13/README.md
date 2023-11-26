@@ -629,5 +629,132 @@ Tekan button ‘New Random Number' beberapa kali, maka akan tampil teks angka te
 
 >> Jawaban: Sudah di-commit. 
 
+## 8. Praktikum 6: StreamBuilder
+
+#### Langkah 1: Buat Project Baru
+Buatlah sebuah project flutter baru dengan nama streambuilder_nama (beri nama panggilan Anda) di folder week-13/src/ repository GitHub Anda.
+
+#### Langkah 2: Buat file baru stream.dart
+Ketik kode ini
+
+```dart
+class NumberStream{}
+```
+
+#### Langkah 3: Tetap di file stream.dart
+Ketik kode seperti berikut.
+
+```dart
+import 'dart:math';
+```
+
+#### Langkah 4: Edit main.dart
+Ketik kode seperti berikut ini.
+
+```dart
+import 'package:flutter/material.dart';
+import 'stream.dart';
+import 'dart:async';
+
+void main(){
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget{
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context){
+    return MaterialApp(
+      title: 'Stream',
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+      ),
+      home: const StreamHomePage(),
+    );
+  }
+}
+
+class StreamHomePage extends StatefulWidget{
+  const StreamHomePage({super.key});
+
+  @override
+  State<StreamHomePage> createState() => _StreamHomePageState();
+}
+
+class _StreamHomePageState extends State<StreamHomePage>{
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+
+      appBar: AppBar(
+        title: const Text('Stream'),
+      ),
+      body: Container(
+      ),
+      );
+  }
+}
+```
+
+#### Langkah 5: Tambah variabel
+Di dalam class _StreamHomePageState, ketika variabel ini.
+
+```dart
+late Stream<int> numberStream;
+```
+
+#### Langkah 6: Edit initState()
+Ketik kode seperti berikut.
+
+```dart
+@override
+
+void initState(){
+  numberStream = NumberStream().getNumbers();
+  super.initState();
+}
+```
+
+#### Langkah 7: Edit method build()
+
+```dart
+body: StreamBuilder(
+  stream: numberStream,
+  initialData: 0,
+  builder: (context, snapshot){
+    if(snapshot.hasError){
+      print('Error!');
+    }
+    if(snapshot.hasData){
+      return Center(
+        child: Text(
+          snapshot.data.toString(),
+          style: const TextStyle(fontSize: 96),
+    ));
+    
+    }else{
+      return const SizedBox.shrink();
+  }
+  },
+),
+```
+
+#### Langkah 8: Run
+Hasilnya, setiap detik akan tampil angka baru.
+
+### Soal 12
+- Jelaskan maksud kode pada langkah 3 dan 7 !
+
+  >> JawabanLangkah 3 mengimpor pustaka dart:math untuk mengakses fungsi-fungsi matematika, terutama yang terkait dengan pembangkitan angka acak. Sedangkan Untuk langkah 7 menggunakan StreamBuilder untuk membangun antarmuka yang merespons data dari numberStream. Saat snapshot memiliki data dan tidak ada kesalahan, teks berukuran besar ditampilkan yang merupakan nilai dari snapshot data. Ketika tidak ada data, tampilan tetap kosong tanpa menampilkan apapun.
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+
+  <img src = docs/prakG.gif>'
+
+- Lalu lakukan commit dengan pesan "W13: Jawaban Soal 12".
+  >> Sudah di-commit.
+
+
 
 
