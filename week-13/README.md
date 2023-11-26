@@ -447,3 +447,111 @@ Langkah-langkah tersebut menambahkan kemampuan transformasi pada sebuah Stream d
 
   >> Sudah di-commit.
   
+## Praktikum 4: Subscribe ke stream events
+
+#### Langkah 1: Tambah variabel
+Tambahkan variabel berikut di class _StreamHomePageState
+
+```dart
+late StreamSubscription subsctiption;
+```
+
+#### Langkah 2: aEdit initState()
+Edit kode seperti berikut ini.
+
+```dart
+@override
+void initState() {
+    numberStream = NumberStream();
+    numberStreamController = NumberStream.controller;
+    Stream stream = numberStreamController.stream;
+    subscription = stream.listen((event){
+        setState((){
+            lastNumber = event;
+        });
+    });
+    super.initState();
+}
+```
+
+#### Langkah 3: Tetap di initState()
+Tambahkan kode berikut ini.
+
+```dart
+subscription.onError((error){
+    setState((){
+        lastNumber = -1;
+    };)
+});
+```
+
+#### Langkah 4: Tambah properti onDone()
+Tambahkan dibawahnya kode ini setelah onError
+
+```dart
+subscription.onDone((){
+    print('OnDone was called');
+})
+```
+
+#### Langkah 5: Tambah method baru
+Ketik method ini di dalam class _StreamHomePageState
+
+```dart
+void stopStream(){
+    numberStreamController.close();
+}
+```
+
+#### Langkah 6: Pindah ke method dispose()
+Jika method dispose() belum ada, Anda dapat mengetiknya dan dibuat override. Ketik kode ini didalamnya.
+
+```dart
+subscription.cancel();
+```
+
+#### Langkah 7: Pindah ke method build()
+Tambahkan button kedua dengan isi kode seperti berikut ini.
+
+```dart
+ElevatedButton(
+    onPressed: () => stopStream(),
+    child: const Text('Stop Subscription'),
+)
+```
+
+#### Langkah 8: Edit method addRandomNumber()
+Edit kode seperti berikut ini.
+
+void addRandomNumber(){
+    Random random = Random();
+    int myNum = random.nextInt(10);
+    if (!numberStreamController.isClosed){
+        numberStream.addNumberToSink(myNum);
+    }else{
+        setState((){
+            lastNumber = -1;
+        });
+    }
+}
+
+#### Langkah 9: Run
+Anda akan melihat dua button seperti gambar berikut.
+
+#### Langkah 10: Tekan button ‘Stop Subscription'
+Anda akan melihat pesan di Debug Console seperti berikut.
+
+### Soal 9
+- Jelaskan maksud kode langkah 2, 6 dan 8 tersebut!
+
+>> Jawaban: 
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+
+<img src = 'docs/prakE.gif'>
+
+- Lalu lakukan commit dengan pesan "W13: Jawaban Soal 9".
+
+>> Sudah di-commit.
+
+
